@@ -1,7 +1,8 @@
 const container = document.querySelector("#container");
-container.style.cssText = "width: 400px; height: 500px"
+container.style.cssText = ""
 const resultsDisplay = document.createElement("div");
-resultsDisplay.style.cssText = "width: 100%; height: 100px; border: 1px solid grey"
+resultsDisplay.classList.add("resultsDisplay");
+resultsDisplay.style.cssText = ""
 container.appendChild(resultsDisplay);
 function add (a,b) {
     return a + b;
@@ -19,7 +20,7 @@ function divide (a,b) {
     return a/b;
 }
 
-console.log(multiply(9,3));
+//console.log(multiply(9,3));
 
 let operand1, operand2, operator;
 
@@ -29,7 +30,7 @@ function operate (a, b, c) {
 }
 
 for (let i = 0; i <= 20; i++) {
-    let button = document.createElement("button");
+    var button = document.createElement("button");
     if( i % 5 == 0) {
         button.style.cssText = "border: 0; height: 0; width: 100%";
     }
@@ -64,9 +65,14 @@ for (let i = 0; i <= 20; i++) {
     if (i == 19) {
         button.innerHTML = "Clear"
     }
-    //if (i == 15) {
-        //button.innerHTML = "Clear"
-  //  }
     
     container.appendChild(button);
 }
+
+//function to add event listeners and populate the keys
+
+container.addEventListener("click", (event) => {
+    let pressedButton = event.target.innerHTML;
+    resultsDisplay.textContent = pressedButton;
+    
+})

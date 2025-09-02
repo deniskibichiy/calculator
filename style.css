@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 button {
     width: 100px;
     height: 100px;
@@ -13,4 +17,19 @@ button:hover {
 #container {
     display: flex;
     flex-wrap: wrap;
+    width: 400px; 
+    height: 550px;
+}
+
+#container :nth-child(21) {
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+}
+
+.resultsDisplay {
+    width: 100%; 
+    padding: 10px;
+    height: 150px; 
+    border: 1px solid grey
 }
