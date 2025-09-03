@@ -123,6 +123,11 @@ container.addEventListener("click", (event) => {
         secondOperand.push(pressedButton);
         secondPressedNumber = secondOperand.reduce((secondPressedNumber, item) => `${secondPressedNumber}${item}`);
     }
-    
+    if(pressedButton === "=" && pressedButton !== "/" && pressedButton !== "*" && pressedButton !== "-" && pressedButton !== "+" ) {
+        secondOperand.length = 0;
+        operand2 = parseInt(secondPressedNumber);
+        let result = operator(operand1, operand2);
+        resultsDisplay.textContent = result;
+    }
 
 })
