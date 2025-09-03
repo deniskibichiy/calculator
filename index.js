@@ -119,15 +119,23 @@ container.addEventListener("click", (event) => {
         pressedNumber = parseInt(pressedNumber);
         resultsDisplay.textContent = pressedNumber;
     }
-    if (pressedButton && operator && operand1) {
+    if (pressedButton && operator && operand1 && pressedButton !== "/" && pressedButton !== "*" && pressedButton !== "-" && pressedButton !== "+" ) {
         secondOperand.push(pressedButton);
         secondPressedNumber = secondOperand.reduce((secondPressedNumber, item) => `${secondPressedNumber}${item}`);
     }
-    if(pressedButton === "=" && pressedButton !== "/" && pressedButton !== "*" && pressedButton !== "-" && pressedButton !== "+" ) {
-        secondOperand.length = 0;
+    if(pressedButton === "=" && pressedButton !== "/" && pressedButton !== "*" && pressedButton !== "-" && pressedButton !== "+" && operator !== divide) {
+        //secondOperand.length = 0;
         operand2 = parseInt(secondPressedNumber);
         let result = operator(operand1, operand2);
         resultsDisplay.textContent = result;
+    } else if(pressedButton === "=" && operator == divide ) {
+        operand2 = parseInt(secondPressedNumber);
+        if (operand2 === 0) {
+            resultsDisplay.textContent = "Forbidden operations"
+        }
+        result = operator(operand1, operand2);
+        resultsDisplay.textContent = result;
     }
+
 
 })
