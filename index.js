@@ -20,6 +20,10 @@ function divide (a,b) {
     return a/b;
 }
 
+function clear () {
+    resultsDisplay.textContent = ""
+}
+
 //console.log(multiply(9,3));
 
 let operand1, operand2, operator;
@@ -64,15 +68,45 @@ for (let i = 0; i <= 20; i++) {
     }
     if (i == 19) {
         button.innerHTML = "Clear"
+        button.classList.add("empty")
     }
     
     container.appendChild(button);
 }
 
 //function to add event listeners and populate the keys
-
+ let clicked =[]
 container.addEventListener("click", (event) => {
-    let pressedButton = event.target.innerHTML;
+    let pressedButton;
+    pressedButton = event.target.innerHTML;
+    if(pressedButton === "/" || pressedButton === "*" || pressedButton === "-" || pressedButton === "+") {
+        switch(pressedButton) {
+            case "*":
+                operator = multiply;
+                break;
+            case "+":
+                operator = add;
+                break;
+            case "/":
+                operator = divide;
+                break;
+            case "-":
+                operator = subtract;
+                break;
+            default:
+        }
+        resultsDisplay.textContent = operator;
+    }
+
+    if (pressedButton === "Clear") {
+        resultsDisplay.textContent = " ";
+    }
+   /* clicked.push(pressedButton);
     resultsDisplay.textContent = pressedButton;
+    pressedNumber = clicked.reduce((pressedNumber, item) => `${pressedNumber}${item}`);
+    pressedNumber = parseInt(pressedNumber);
+     */
     
+
+    console.log(typeof pressedButton);
 })
