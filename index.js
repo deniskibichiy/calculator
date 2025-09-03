@@ -80,33 +80,41 @@ container.addEventListener("click", (event) => {
     let pressedButton;
     pressedButton = event.target.innerHTML;
     if(pressedButton === "/" || pressedButton === "*" || pressedButton === "-" || pressedButton === "+") {
+    operand1 = pressedNumber;
+    clicked.length =0;
+
         switch(pressedButton) {
             case "*":
                 operator = multiply;
+                resultsDisplay.textContent = "*";
                 break;
             case "+":
                 operator = add;
+                resultsDisplay.textContent = "+";
                 break;
             case "/":
                 operator = divide;
+                resultsDisplay.textContent = "/";
                 break;
             case "-":
                 operator = subtract;
+                resultsDisplay.textContent = "-";
                 break;
             default:
         }
-        resultsDisplay.textContent = operator;
+        
     }
 
-    if (pressedButton === "Clear") {
+   else if (pressedButton === "Clear") {
         resultsDisplay.textContent = " ";
+        clicked.length = 0;
+        operand1 = 0;
     }
-   /* clicked.push(pressedButton);
-    resultsDisplay.textContent = pressedButton;
-    pressedNumber = clicked.reduce((pressedNumber, item) => `${pressedNumber}${item}`);
-    pressedNumber = parseInt(pressedNumber);
-     */
-    
-
-    console.log(typeof pressedButton);
+    else if (pressedButton && pressedButton !== "=") {
+        clicked.push(pressedButton);
+        resultsDisplay.textContent = pressedButton;
+        pressedNumber = clicked.reduce((pressedNumber, item) => `${pressedNumber}${item}`);
+        pressedNumber = parseInt(pressedNumber);
+        resultsDisplay.textContent = pressedNumber;
+    }
 })
