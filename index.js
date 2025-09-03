@@ -75,7 +75,8 @@ for (let i = 0; i <= 20; i++) {
 }
 
 //function to add event listeners and populate the keys
- let clicked =[]
+ let clicked =[];
+ let secondOperand = [];
 container.addEventListener("click", (event) => {
     let pressedButton;
     pressedButton = event.target.innerHTML;
@@ -109,6 +110,7 @@ container.addEventListener("click", (event) => {
         resultsDisplay.textContent = " ";
         clicked.length = 0;
         operand1 = 0;
+        secondOperand.length = 0;
     }
     else if (pressedButton && pressedButton !== "=") {
         clicked.push(pressedButton);
@@ -117,4 +119,10 @@ container.addEventListener("click", (event) => {
         pressedNumber = parseInt(pressedNumber);
         resultsDisplay.textContent = pressedNumber;
     }
+    if (pressedButton && operator && operand1) {
+        secondOperand.push(pressedButton);
+        secondPressedNumber = secondOperand.reduce((secondPressedNumber, item) => `${secondPressedNumber}${item}`);
+    }
+    
+
 })
