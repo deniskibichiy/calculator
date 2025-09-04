@@ -76,7 +76,9 @@ for (let i = 0; i <= 20; i++) {
 
 //function to add event listeners and populate the keys
  let clicked =[];
+ let result;
  let secondOperand = [];
+ let operand1TextNode, operand2TextNode, resultTextNode;
 container.addEventListener("click", (event) => {
     let pressedButton;
     pressedButton = event.target.innerHTML;
@@ -110,6 +112,7 @@ container.addEventListener("click", (event) => {
         resultsDisplay.textContent = " ";
         clicked.length = 0;
         operand1 = 0;
+        operand2 = 0;
         secondOperand.length = 0;
     }
     else if (pressedButton && pressedButton !== "=") {
@@ -126,16 +129,28 @@ container.addEventListener("click", (event) => {
     if(pressedButton === "=" && pressedButton !== "/" && pressedButton !== "*" && pressedButton !== "-" && pressedButton !== "+" && operator !== divide) {
         secondOperand.length = 0;
         operand2 = parseInt(secondPressedNumber);
-        let result = operator(operand1, operand2);
+        result = operator(operand1, operand2);
         resultsDisplay.textContent = result;
     } else if(pressedButton === "=" && operator == divide ) {
+        secondOperand.length = 0;
         operand2 = parseInt(secondPressedNumber);
-        if (operand2 === 0) {
+
+        if (operand2 == 0) {
+
+            result= "Forbidden"
             resultsDisplay.textContent = "Forbidden operations"
         }
         result = operator(operand1, operand2);
-        resultsDisplay.textContent = result;
+        resultsDisplay.textContent = result.toFixed(3);
     }
+    if(result && operand1 && operand2) {
+        clicked.length = 0;
+        operand1 = 0;
+        operand2 = 0;
+        secondOperand.length = 0;
+
+    }
+
 
 
 })
