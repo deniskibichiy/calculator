@@ -144,10 +144,7 @@ container.addEventListener("click", (event) => {
         resultsDisplay.textContent = result.toFixed(3);
     }
     if(result && operand1 && operand2) {
-        clicked.length = 0;
-        operand1 = 0;
-        operand2 = 0;
-        secondOperand.length = 0;
+        operand1 = result;
 
     }
 
